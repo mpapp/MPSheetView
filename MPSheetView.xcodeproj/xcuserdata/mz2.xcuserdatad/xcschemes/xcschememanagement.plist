@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>MPSheetView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>83</integer>
+		</dict>
+		<key>MPSheetViewExample.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>82</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>5F36449B1A438CF30047E973</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5F3644B11A438CF30047E973</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5F3644C61A438D180047E973</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5F3644D01A438D180047E973</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

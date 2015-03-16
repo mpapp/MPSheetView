@@ -1,0 +1,786 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5F340E7E1A44BDB1009B1874 /* MPSheetView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F340E7C1A44BDB1009B1874 /* MPSheetView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F340E7F1A44BDB1009B1874 /* MPSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F340E7D1A44BDB1009B1874 /* MPSheetView.m */; };
+		5F3644A31A438CF30047E973 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3644A21A438CF30047E973 /* AppDelegate.m */; };
+		5F3644A51A438CF30047E973 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3644A41A438CF30047E973 /* main.m */; };
+		5F3644A81A438CF30047E973 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3644A71A438CF30047E973 /* ViewController.m */; };
+		5F3644AA1A438CF30047E973 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F3644A91A438CF30047E973 /* Images.xcassets */; };
+		5F3644AD1A438CF30047E973 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3644AB1A438CF30047E973 /* Main.storyboard */; };
+		5F3644B91A438CF30047E973 /* MPSheetViewExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3644B81A438CF30047E973 /* MPSheetViewExampleTests.m */; };
+		5F3644CC1A438D180047E973 /* MPSheetViewFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3644CB1A438D180047E973 /* MPSheetViewFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F3644D21A438D180047E973 /* MPSheetView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3644C71A438D180047E973 /* MPSheetView.framework */; };
+		5F3644DB1A438D180047E973 /* MPSheetViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3644DA1A438D180047E973 /* MPSheetViewTests.m */; };
+		5F3644DE1A438D180047E973 /* MPSheetView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3644C71A438D180047E973 /* MPSheetView.framework */; };
+		5F3644DF1A438D180047E973 /* MPSheetView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3644C71A438D180047E973 /* MPSheetView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F3644E81A438D350047E973 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F3644E71A438D350047E973 /* SceneKit.framework */; };
+		5F3644EC1A438DDD0047E973 /* MPSheetViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3644E91A438DDD0047E973 /* MPSheetViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F3644ED1A438DDD0047E973 /* MPSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3644EA1A438DDD0047E973 /* MPSheetViewController.m */; };
+		5F3644EE1A438DDD0047E973 /* MPSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F3644EB1A438DDD0047E973 /* MPSheetViewController.xib */; };
+		5F3644F01A43A4D80047E973 /* book-cover.dae in Resources */ = {isa = PBXBuildFile; fileRef = 5F3644EF1A43A4D80047E973 /* book-cover.dae */; };
+		5F482E021A6BD688001FAA38 /* tractatus-logico-philosophicus.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F482E011A6BD688001FAA38 /* tractatus-logico-philosophicus.png */; };
+		5F482E031A6BD957001FAA38 /* tractatus-logico-philosophicus.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F482E011A6BD688001FAA38 /* tractatus-logico-philosophicus.png */; };
+		5F8AE82E1A45115E0007F282 /* biomed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8AE82D1A45115E0007F282 /* biomed.png */; };
+		5F8AE8321A45A04A0007F282 /* teh-manual.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8AE8311A45A04A0007F282 /* teh-manual.png */; };
+		5F8AE8341A45A1120007F282 /* origin-of-species.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8AE8331A45A1120007F282 /* origin-of-species.png */; };
+		5F8AE8921A460DD30007F282 /* book-cover.dae in Resources */ = {isa = PBXBuildFile; fileRef = 5F3644EF1A43A4D80047E973 /* book-cover.dae */; };
+		5F8AE8931A460DDA0007F282 /* origin-of-species.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8AE8331A45A1120007F282 /* origin-of-species.png */; };
+		5F8AE8941A460DDA0007F282 /* teh-manual.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8AE8311A45A04A0007F282 /* teh-manual.png */; };
+		5F8AE8951A460DDA0007F282 /* biomed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8AE82D1A45115E0007F282 /* biomed.png */; };
+		5F8AE8971A460DDA0007F282 /* Turing_Paper_1936.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FC623191A43AF6000B6F1FF /* Turing_Paper_1936.png */; };
+		5FC6231A1A43AF6000B6F1FF /* Turing_Paper_1936.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FC623191A43AF6000B6F1FF /* Turing_Paper_1936.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5F3644B31A438CF30047E973 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F3644941A438CF30047E973 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F36449B1A438CF30047E973;
+			remoteInfo = MPSheetViewExample;
+		};
+		5F3644D31A438D180047E973 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F3644941A438CF30047E973 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F3644C61A438D180047E973;
+			remoteInfo = MPSheetView;
+		};
+		5F3644D51A438D180047E973 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F3644941A438CF30047E973 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F36449B1A438CF30047E973;
+			remoteInfo = MPSheetViewExample;
+		};
+		5F3644DC1A438D180047E973 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F3644941A438CF30047E973 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F3644C61A438D180047E973;
+			remoteInfo = MPSheetView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5F3644E31A438D180047E973 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5F3644DF1A438D180047E973 /* MPSheetView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5F340E7C1A44BDB1009B1874 /* MPSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSheetView.h; sourceTree = "<group>"; };
+		5F340E7D1A44BDB1009B1874 /* MPSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSheetView.m; sourceTree = "<group>"; };
+		5F36449C1A438CF30047E973 /* MPSheetViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPSheetViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F3644A01A438CF30047E973 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F3644A11A438CF30047E973 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5F3644A21A438CF30047E973 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5F3644A41A438CF30047E973 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5F3644A61A438CF30047E973 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5F3644A71A438CF30047E973 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5F3644A91A438CF30047E973 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5F3644AC1A438CF30047E973 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5F3644B21A438CF30047E973 /* MPSheetViewExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MPSheetViewExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F3644B71A438CF30047E973 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F3644B81A438CF30047E973 /* MPSheetViewExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPSheetViewExampleTests.m; sourceTree = "<group>"; };
+		5F3644C71A438D180047E973 /* MPSheetView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MPSheetView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F3644CA1A438D180047E973 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F3644CB1A438D180047E973 /* MPSheetViewFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPSheetViewFramework.h; sourceTree = "<group>"; };
+		5F3644D11A438D180047E973 /* MPSheetViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MPSheetViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F3644D91A438D180047E973 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F3644DA1A438D180047E973 /* MPSheetViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPSheetViewTests.m; sourceTree = "<group>"; };
+		5F3644E71A438D350047E973 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		5F3644E91A438DDD0047E973 /* MPSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSheetViewController.h; sourceTree = "<group>"; };
+		5F3644EA1A438DDD0047E973 /* MPSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSheetViewController.m; sourceTree = "<group>"; };
+		5F3644EB1A438DDD0047E973 /* MPSheetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPSheetViewController.xib; sourceTree = "<group>"; };
+		5F3644EF1A43A4D80047E973 /* book-cover.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "book-cover.dae"; sourceTree = "<group>"; };
+		5F482E011A6BD688001FAA38 /* tractatus-logico-philosophicus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tractatus-logico-philosophicus.png"; sourceTree = "<group>"; };
+		5F8AE82D1A45115E0007F282 /* biomed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = biomed.png; sourceTree = "<group>"; };
+		5F8AE8311A45A04A0007F282 /* teh-manual.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "teh-manual.png"; sourceTree = "<group>"; };
+		5F8AE8331A45A1120007F282 /* origin-of-species.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "origin-of-species.png"; sourceTree = "<group>"; };
+		5FC623191A43AF6000B6F1FF /* Turing_Paper_1936.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Turing_Paper_1936.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F3644991A438CF30047E973 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F3644E81A438D350047E973 /* SceneKit.framework in Frameworks */,
+				5F3644DE1A438D180047E973 /* MPSheetView.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F3644AF1A438CF30047E973 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F3644C31A438D180047E973 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F3644CE1A438D180047E973 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F3644D21A438D180047E973 /* MPSheetView.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5F3644931A438CF30047E973 = {
+			isa = PBXGroup;
+			children = (
+				5F85E5B11A44661000AB39AD /* Frameworks */,
+				5F36449E1A438CF30047E973 /* MPSheetViewExample */,
+				5F3644B51A438CF30047E973 /* MPSheetViewExampleTests */,
+				5F3644C81A438D180047E973 /* MPSheetView */,
+				5F3644D71A438D180047E973 /* MPSheetViewTests */,
+				5F36449D1A438CF30047E973 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5F36449D1A438CF30047E973 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F36449C1A438CF30047E973 /* MPSheetViewExample.app */,
+				5F3644B21A438CF30047E973 /* MPSheetViewExampleTests.xctest */,
+				5F3644C71A438D180047E973 /* MPSheetView.framework */,
+				5F3644D11A438D180047E973 /* MPSheetViewTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F36449E1A438CF30047E973 /* MPSheetViewExample */ = {
+			isa = PBXGroup;
+			children = (
+				5F3644EF1A43A4D80047E973 /* book-cover.dae */,
+				5F3644A11A438CF30047E973 /* AppDelegate.h */,
+				5F3644A21A438CF30047E973 /* AppDelegate.m */,
+				5F3644A61A438CF30047E973 /* ViewController.h */,
+				5F3644A71A438CF30047E973 /* ViewController.m */,
+				5F8AE8331A45A1120007F282 /* origin-of-species.png */,
+				5F8AE8311A45A04A0007F282 /* teh-manual.png */,
+				5F8AE82D1A45115E0007F282 /* biomed.png */,
+				5FC623191A43AF6000B6F1FF /* Turing_Paper_1936.png */,
+				5F482E011A6BD688001FAA38 /* tractatus-logico-philosophicus.png */,
+				5F3644A91A438CF30047E973 /* Images.xcassets */,
+				5F3644AB1A438CF30047E973 /* Main.storyboard */,
+				5F36449F1A438CF30047E973 /* Supporting Files */,
+			);
+			path = MPSheetViewExample;
+			sourceTree = "<group>";
+		};
+		5F36449F1A438CF30047E973 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5F3644A01A438CF30047E973 /* Info.plist */,
+				5F3644A41A438CF30047E973 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5F3644B51A438CF30047E973 /* MPSheetViewExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				5F3644B81A438CF30047E973 /* MPSheetViewExampleTests.m */,
+				5F3644B61A438CF30047E973 /* Supporting Files */,
+			);
+			path = MPSheetViewExampleTests;
+			sourceTree = "<group>";
+		};
+		5F3644B61A438CF30047E973 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5F3644B71A438CF30047E973 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5F3644C81A438D180047E973 /* MPSheetView */ = {
+			isa = PBXGroup;
+			children = (
+				5F3644C91A438D180047E973 /* Supporting Files */,
+				5F3644CB1A438D180047E973 /* MPSheetViewFramework.h */,
+				5F3644E91A438DDD0047E973 /* MPSheetViewController.h */,
+				5F3644EA1A438DDD0047E973 /* MPSheetViewController.m */,
+				5F3644EB1A438DDD0047E973 /* MPSheetViewController.xib */,
+				5F340E7C1A44BDB1009B1874 /* MPSheetView.h */,
+				5F340E7D1A44BDB1009B1874 /* MPSheetView.m */,
+			);
+			path = MPSheetView;
+			sourceTree = "<group>";
+		};
+		5F3644C91A438D180047E973 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5F3644CA1A438D180047E973 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5F3644D71A438D180047E973 /* MPSheetViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				5F3644DA1A438D180047E973 /* MPSheetViewTests.m */,
+				5F3644D81A438D180047E973 /* Supporting Files */,
+			);
+			path = MPSheetViewTests;
+			sourceTree = "<group>";
+		};
+		5F3644D81A438D180047E973 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5F3644D91A438D180047E973 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5F85E5B11A44661000AB39AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5F3644E71A438D350047E973 /* SceneKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5F3644C41A438D180047E973 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F3644EC1A438DDD0047E973 /* MPSheetViewController.h in Headers */,
+				5F3644CC1A438D180047E973 /* MPSheetViewFramework.h in Headers */,
+				5F340E7E1A44BDB1009B1874 /* MPSheetView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5F36449B1A438CF30047E973 /* MPSheetViewExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F3644BC1A438CF30047E973 /* Build configuration list for PBXNativeTarget "MPSheetViewExample" */;
+			buildPhases = (
+				5F3644981A438CF30047E973 /* Sources */,
+				5F3644991A438CF30047E973 /* Frameworks */,
+				5F36449A1A438CF30047E973 /* Resources */,
+				5F3644E31A438D180047E973 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F3644DD1A438D180047E973 /* PBXTargetDependency */,
+			);
+			name = MPSheetViewExample;
+			productName = MPSheetViewExample;
+			productReference = 5F36449C1A438CF30047E973 /* MPSheetViewExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5F3644B11A438CF30047E973 /* MPSheetViewExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F3644BF1A438CF30047E973 /* Build configuration list for PBXNativeTarget "MPSheetViewExampleTests" */;
+			buildPhases = (
+				5F3644AE1A438CF30047E973 /* Sources */,
+				5F3644AF1A438CF30047E973 /* Frameworks */,
+				5F3644B01A438CF30047E973 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F3644B41A438CF30047E973 /* PBXTargetDependency */,
+			);
+			name = MPSheetViewExampleTests;
+			productName = MPSheetViewExampleTests;
+			productReference = 5F3644B21A438CF30047E973 /* MPSheetViewExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5F3644C61A438D180047E973 /* MPSheetView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F3644E01A438D180047E973 /* Build configuration list for PBXNativeTarget "MPSheetView" */;
+			buildPhases = (
+				5F3644C21A438D180047E973 /* Sources */,
+				5F3644C31A438D180047E973 /* Frameworks */,
+				5F3644C41A438D180047E973 /* Headers */,
+				5F3644C51A438D180047E973 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MPSheetView;
+			productName = MPSheetView;
+			productReference = 5F3644C71A438D180047E973 /* MPSheetView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5F3644D01A438D180047E973 /* MPSheetViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F3644E41A438D180047E973 /* Build configuration list for PBXNativeTarget "MPSheetViewTests" */;
+			buildPhases = (
+				5F3644CD1A438D180047E973 /* Sources */,
+				5F3644CE1A438D180047E973 /* Frameworks */,
+				5F3644CF1A438D180047E973 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F3644D41A438D180047E973 /* PBXTargetDependency */,
+				5F3644D61A438D180047E973 /* PBXTargetDependency */,
+			);
+			name = MPSheetViewTests;
+			productName = MPSheetViewTests;
+			productReference = 5F3644D11A438D180047E973 /* MPSheetViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F3644941A438CF30047E973 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Matias Piipari";
+				TargetAttributes = {
+					5F36449B1A438CF30047E973 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					5F3644B11A438CF30047E973 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 5F36449B1A438CF30047E973;
+					};
+					5F3644C61A438D180047E973 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					5F3644D01A438D180047E973 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 5F36449B1A438CF30047E973;
+					};
+				};
+			};
+			buildConfigurationList = 5F3644971A438CF30047E973 /* Build configuration list for PBXProject "MPSheetView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5F3644931A438CF30047E973;
+			productRefGroup = 5F36449D1A438CF30047E973 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5F36449B1A438CF30047E973 /* MPSheetViewExample */,
+				5F3644B11A438CF30047E973 /* MPSheetViewExampleTests */,
+				5F3644C61A438D180047E973 /* MPSheetView */,
+				5F3644D01A438D180047E973 /* MPSheetViewTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F36449A1A438CF30047E973 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F3644F01A43A4D80047E973 /* book-cover.dae in Resources */,
+				5F8AE8321A45A04A0007F282 /* teh-manual.png in Resources */,
+				5F3644AA1A438CF30047E973 /* Images.xcassets in Resources */,
+				5F8AE8341A45A1120007F282 /* origin-of-species.png in Resources */,
+				5FC6231A1A43AF6000B6F1FF /* Turing_Paper_1936.png in Resources */,
+				5F482E021A6BD688001FAA38 /* tractatus-logico-philosophicus.png in Resources */,
+				5F8AE82E1A45115E0007F282 /* biomed.png in Resources */,
+				5F3644AD1A438CF30047E973 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F3644B01A438CF30047E973 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F3644C51A438D180047E973 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F3644EE1A438DDD0047E973 /* MPSheetViewController.xib in Resources */,
+				5F8AE8941A460DDA0007F282 /* teh-manual.png in Resources */,
+				5F8AE8931A460DDA0007F282 /* origin-of-species.png in Resources */,
+				5F8AE8951A460DDA0007F282 /* biomed.png in Resources */,
+				5F8AE8921A460DD30007F282 /* book-cover.dae in Resources */,
+				5F482E031A6BD957001FAA38 /* tractatus-logico-philosophicus.png in Resources */,
+				5F8AE8971A460DDA0007F282 /* Turing_Paper_1936.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F3644CF1A438D180047E973 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F3644981A438CF30047E973 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F3644A81A438CF30047E973 /* ViewController.m in Sources */,
+				5F3644A51A438CF30047E973 /* main.m in Sources */,
+				5F3644A31A438CF30047E973 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F3644AE1A438CF30047E973 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F3644B91A438CF30047E973 /* MPSheetViewExampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F3644C21A438D180047E973 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F3644ED1A438DDD0047E973 /* MPSheetViewController.m in Sources */,
+				5F340E7F1A44BDB1009B1874 /* MPSheetView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F3644CD1A438D180047E973 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F3644DB1A438D180047E973 /* MPSheetViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F3644B41A438CF30047E973 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F36449B1A438CF30047E973 /* MPSheetViewExample */;
+			targetProxy = 5F3644B31A438CF30047E973 /* PBXContainerItemProxy */;
+		};
+		5F3644D41A438D180047E973 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F3644C61A438D180047E973 /* MPSheetView */;
+			targetProxy = 5F3644D31A438D180047E973 /* PBXContainerItemProxy */;
+		};
+		5F3644D61A438D180047E973 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F36449B1A438CF30047E973 /* MPSheetViewExample */;
+			targetProxy = 5F3644D51A438D180047E973 /* PBXContainerItemProxy */;
+		};
+		5F3644DD1A438D180047E973 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F3644C61A438D180047E973 /* MPSheetView */;
+			targetProxy = 5F3644DC1A438D180047E973 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5F3644AB1A438CF30047E973 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5F3644AC1A438CF30047E973 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5F3644BA1A438CF30047E973 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5F3644BB1A438CF30047E973 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5F3644BD1A438CF30047E973 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MPSheetViewExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5F3644BE1A438CF30047E973 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MPSheetViewExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5F3644C01A438CF30047E973 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MPSheetViewExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MPSheetViewExample.app/Contents/MacOS/MPSheetViewExample";
+			};
+			name = Debug;
+		};
+		5F3644C11A438CF30047E973 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MPSheetViewExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MPSheetViewExample.app/Contents/MacOS/MPSheetViewExample";
+			};
+			name = Release;
+		};
+		5F3644E11A438D180047E973 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MPSheetView/Info.plist;
+				INSTALL_PATH = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5F3644E21A438D180047E973 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = MPSheetView/Info.plist;
+				INSTALL_PATH = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5F3644E51A438D180047E973 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MPSheetViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MPSheetViewExample.app/Contents/MacOS/MPSheetViewExample";
+			};
+			name = Debug;
+		};
+		5F3644E61A438D180047E973 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MPSheetViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MPSheetViewExample.app/Contents/MacOS/MPSheetViewExample";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F3644971A438CF30047E973 /* Build configuration list for PBXProject "MPSheetView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F3644BA1A438CF30047E973 /* Debug */,
+				5F3644BB1A438CF30047E973 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F3644BC1A438CF30047E973 /* Build configuration list for PBXNativeTarget "MPSheetViewExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F3644BD1A438CF30047E973 /* Debug */,
+				5F3644BE1A438CF30047E973 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F3644BF1A438CF30047E973 /* Build configuration list for PBXNativeTarget "MPSheetViewExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F3644C01A438CF30047E973 /* Debug */,
+				5F3644C11A438CF30047E973 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F3644E01A438D180047E973 /* Build configuration list for PBXNativeTarget "MPSheetView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F3644E11A438D180047E973 /* Debug */,
+				5F3644E21A438D180047E973 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F3644E41A438D180047E973 /* Build configuration list for PBXNativeTarget "MPSheetViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F3644E51A438D180047E973 /* Debug */,
+				5F3644E61A438D180047E973 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5F3644941A438CF30047E973 /* Project object */;
+}
