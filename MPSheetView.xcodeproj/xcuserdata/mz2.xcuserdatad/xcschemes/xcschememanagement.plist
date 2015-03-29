@@ -7,12 +7,12 @@
 		<key>MPSheetView.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>87</integer>
+			<integer>88</integer>
 		</dict>
 		<key>MPSheetViewExample.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>86</integer>
+			<integer>87</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
