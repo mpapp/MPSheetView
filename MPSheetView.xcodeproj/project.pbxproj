@@ -12,7 +12,6 @@
 		5F3644A31A438CF30047E973 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3644A21A438CF30047E973 /* AppDelegate.m */; };
 		5F3644A51A438CF30047E973 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3644A41A438CF30047E973 /* main.m */; };
 		5F3644A81A438CF30047E973 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3644A71A438CF30047E973 /* ViewController.m */; };
-		5F3644AA1A438CF30047E973 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F3644A91A438CF30047E973 /* Images.xcassets */; };
 		5F3644AD1A438CF30047E973 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3644AB1A438CF30047E973 /* Main.storyboard */; };
 		5F3644B91A438CF30047E973 /* MPSheetViewExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3644B81A438CF30047E973 /* MPSheetViewExampleTests.m */; };
 		5F3644CC1A438D180047E973 /* MPSheetViewFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F3644CB1A438D180047E973 /* MPSheetViewFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -93,7 +92,6 @@
 		5F3644A41A438CF30047E973 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5F3644A61A438CF30047E973 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5F3644A71A438CF30047E973 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		5F3644A91A438CF30047E973 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5F3644AC1A438CF30047E973 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5F3644B21A438CF30047E973 /* MPSheetViewExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MPSheetViewExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F3644B71A438CF30047E973 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 				5F8AE82D1A45115E0007F282 /* biomed.png */,
 				5FC623191A43AF6000B6F1FF /* Turing_Paper_1936.png */,
 				5F482E011A6BD688001FAA38 /* tractatus-logico-philosophicus.png */,
-				5F3644A91A438CF30047E973 /* Images.xcassets */,
 				5F3644AB1A438CF30047E973 /* Main.storyboard */,
 				5F36449F1A438CF30047E973 /* Supporting Files */,
 			);
@@ -410,7 +407,6 @@
 			files = (
 				5F3644F01A43A4D80047E973 /* book-cover.dae in Resources */,
 				5F8AE8321A45A04A0007F282 /* teh-manual.png in Resources */,
-				5F3644AA1A438CF30047E973 /* Images.xcassets in Resources */,
 				5F8AE8341A45A1120007F282 /* origin-of-species.png in Resources */,
 				5FC6231A1A43AF6000B6F1FF /* Turing_Paper_1936.png in Resources */,
 				5F482E021A6BD688001FAA38 /* tractatus-logico-philosophicus.png in Resources */,
