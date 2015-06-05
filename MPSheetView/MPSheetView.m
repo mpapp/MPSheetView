@@ -463,7 +463,13 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
             [self selectNode:hit.node];
         }
         else {
-            [self selectNode:nil];
+            id<MPSheetItem> item = [self sheetItemForNode:hit.node];
+            if (item) {
+                [self selectNode:hit.node];
+            }
+            else {
+                [self selectNode:nil];                
+            }
         }
     }
     else {
