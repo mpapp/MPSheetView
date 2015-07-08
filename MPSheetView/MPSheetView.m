@@ -23,11 +23,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.ortographicScale = 1.0f;
+    self.ortographicScale = 1.15f;
     self.backgroundDiffuseColor = [NSColor colorWithCalibratedWhite:0.4 alpha:1.0];
     self.backgroundAmbientColor = [NSColor colorWithCalibratedWhite:0.1 alpha:1.0];
     
-    self.selectionSpotlightColor = [NSColor colorWithWhite:0.37 alpha:1.0f];
+    self.selectionSpotlightColor = [NSColor colorWithCalibratedHue:44.0f/360.0f
+                                                        saturation:38.0f/100.0f
+                                                        brightness:.27
+                                                             alpha:1.0];
     
     self.titleFontSize = 12.0f;
     self.subtitleFontSize = 10.0f;
