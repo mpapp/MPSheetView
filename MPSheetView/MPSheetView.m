@@ -455,6 +455,16 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     [lightNode.light addAnimation:spotAnimation forKey:@"spotColor"];
 }
 
+- (NSMenu *)menuForEvent:(NSEvent *)event {
+    NSPoint mouseLocation = [self convertPoint:[event locationInWindow] fromView:nil];
+    NSArray *hits = [self hitTest:mouseLocation options:nil];
+    SCNHitTestResult *hit = hits[0];
+    
+    id<MPSheetItem> item = [self sheetItemForNode:hit.node];
+    
+    return [self.dataSource sheetView:self menuForItem:item];
+}
+
 - (void)mouseUp:(NSEvent *)event {
     // Convert the mouse location in screen coordinates to local coordinates, then perform a hit test with the local coordinates.
     NSPoint mouseLocation = [self convertPoint:[event locationInWindow] fromView:nil];

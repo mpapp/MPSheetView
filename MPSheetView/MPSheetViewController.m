@@ -59,4 +59,8 @@
     NSParameterAssert(item);
 }
 
+- (NSMenu *)sheetView:(MPSheetView *)sheetView menuForItem:(id<MPSheetItem>)item {
+    return nil;
+}
+
 @end

@@ -25,6 +25,8 @@
 
 - (void)sheetView:(MPSheetView *)sheetView didSelectItem:(id<MPSheetItem>)item;
 
+- (NSMenu *)sheetView:(MPSheetView *)sheetView menuForItem:(id<MPSheetItem>)item;
+
 @end
 
 IB_DESIGNABLE
