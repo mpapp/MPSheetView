@@ -10,7 +10,7 @@
 
 #import <objc/runtime.h>
 
-// TODO: the terminology is getting pretty overloaded (prepare, set up, reload, refresh).
+// TODO: the terminology is getting pretty overloaded (prepare, set up, refresh).
 // TODO: Clean up the messy chained private methods.
 
 @interface MPSheetView ()
@@ -21,10 +21,6 @@
 @end
 
 @implementation MPSheetView
-
-- (void)reloadData {
-    [self setUpScene];
-}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -40,6 +36,8 @@
     
     self.titleFontSize = 12.0f;
     self.subtitleFontSize = 10.0f;
+    
+    [self prepareScene];
 }
 
 typedef NS_OPTIONS(NSUInteger, MPSheetViewNodeCategory) {
@@ -243,8 +241,11 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     SCNVector3 midpointV;
     NSArray *addedNodes = [self nodesForSheetItems:self.sheetItems midpoint:&midpointV];
     
-    if ([self.renderedSheetItems isEqual:addedNodes])
+    if ([self.renderedSheetItems isEqual:self.sheetItems])
         return; // we already rendered these ones.
+
+    self.selectedItem = nil;
+    self.renderedSheetItems = self.sheetItems;
     
     // remove existing sheetItemsRootNode.
     //[[self sheetItemsRootNode] removeFromParentNode];
@@ -311,13 +312,13 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     if (previousItemsRemoved) {
         for (SCNNode *node in addedNodes) {
             SCNVector3 p = node.position;
-            SCNVector3 startP = SCNVector3Make(node.position.x, node.position.y + 1, node.position.z);
+            SCNVector3 startP = SCNVector3Make(node.position.x, node.position.y + .8, node.position.z);
             CABasicAnimation *nodeAdditionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
             nodeAdditionAnimation.fromValue = [NSValue valueWithSCNVector3:startP];
             nodeAdditionAnimation.toValue = [NSValue valueWithSCNVector3:p];
             nodeAdditionAnimation.repeatCount = 1;
             nodeAdditionAnimation.autoreverses = NO;
-            nodeAdditionAnimation.duration = 1.0;
+            nodeAdditionAnimation.duration = .8;
             nodeAdditionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
             
             node.position = p;
@@ -485,7 +486,7 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     [self pointCameraNode:[self primaryCameraNode] atTargetNode:self.sheetItemsMidpointNode];
 }
 
-- (void)setUpScene {
+- (void)reloadData {
     if (!self.scene) {
         [self prepareScene];
     }

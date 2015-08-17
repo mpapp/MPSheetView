@@ -26,12 +26,11 @@
 
 
 - (BOOL)isEqual:(id)object {
-    if (![object isKindOfClass:MPSheetView.class])
+    if (![object isKindOfClass:self.class])
         return NO;
     
     return [[object title] isEqual:self.title]
-        && [[object subtitle] isEqual:self.subtitle]
-        && [[object coverImage] isEqual:self.coverImage];
+        && [[object subtitle] isEqual:self.subtitle];
 }
 
 @end
