@@ -131,10 +131,12 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     titleTextGeom.font = [NSFont systemFontOfSize:self.titleFontSize];
     SCNNode *titleTextNode = [SCNNode new];
     titleTextNode.geometry = titleTextGeom;
+    titleTextNode.name = @"title";
     
     SCNText *subtitleTextGeom = [SCNText textWithString:item.subtitle extrusionDepth:0.0];
     subtitleTextGeom.font = [NSFont systemFontOfSize:self.subtitleFontSize];
     SCNNode *subtitleTextNode = [SCNNode new];
+    subtitleTextNode.name = @"subtitle";
     subtitleTextNode.geometry = subtitleTextGeom;
     
     SCNMaterial *textMaterial = [[SCNMaterial alloc] init];
@@ -226,17 +228,60 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
 
 - (void)refreshItems {
     // remove existing sheetItemsRootNode.
-    [[self sheetItemsRootNode] removeFromParentNode];
+    //[[self sheetItemsRootNode] removeFromParentNode];
     [[self sheetItemsMidpointNode] removeFromParentNode];
     
-    SCNNode *sheetItemsRootNode = [[SCNNode alloc] init];
-    sheetItemsRootNode.name = @"sheetItemsRootNode";
-    [self.scene.rootNode addChildNode:sheetItemsRootNode];
+    SCNNode *sheetItemsRootNode = [self.scene.rootNode childNodeWithName:@"sheetItemsRootNode" recursively:YES];
+    
+    if (!sheetItemsRootNode) {
+        sheetItemsRootNode = [[SCNNode alloc] init];
+        sheetItemsRootNode.name = @"sheetItemsRootNode";
+        [self.scene.rootNode addChildNode:sheetItemsRootNode];
+    }
+    
+    BOOL previousItemsRemoved = sheetItemsRootNode.childNodes.count > 0;
     
     // add new sheet items as the children of sheetItemsRootNode.
+    NSUInteger i = 0;
+    for (SCNNode *node in sheetItemsRootNode.childNodes) {
+        
+        node.opacity = 1.0f;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * (CGFloat)i++ * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            CABasicAnimation *nodeRemovalAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+            
+            SCNVector3 toPos = SCNVector3Make(node.position.x, -3, node.position.z);
+            nodeRemovalAnimation.fromValue = [NSValue valueWithSCNVector3:node.position];
+            nodeRemovalAnimation.toValue = [NSValue valueWithSCNVector3:toPos];
+            nodeRemovalAnimation.repeatCount = 1;
+            nodeRemovalAnimation.autoreverses = NO;
+            nodeRemovalAnimation.duration = 5.5;
+            nodeRemovalAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+            nodeRemovalAnimation.delegate = self;
+            
+            node.position = toPos;
+            
+            [nodeRemovalAnimation setValue:node forKey:@"animatedNode"];
+            
+            [node addAnimation:nodeRemovalAnimation forKey:@"nodeRemovalAnimation"];
+        
+            CABasicAnimation *nodeOpacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+            nodeOpacityAnimation.fromValue = @(1.0f);
+            nodeOpacityAnimation.toValue = @(0.0f);
+            nodeOpacityAnimation.repeatCount = 1;
+            nodeOpacityAnimation.autoreverses = NO;
+            nodeOpacityAnimation.duration = 0.5;
+            nodeOpacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+            node.opacity = 0.0f;
+
+            [node addAnimation:nodeOpacityAnimation forKey:@"nodeOpacityAnimation"];
+        });
+        
+    }
     
     SCNVector3 midpointV;
-    for (SCNNode *node in [self nodesForSheetItems:self.sheetItems midpoint:&midpointV]) {
+    NSArray *addedNodes = [self nodesForSheetItems:self.sheetItems midpoint:&midpointV];
+    for (SCNNode *node in addedNodes) {
         [sheetItemsRootNode addChildNode:node];
     }
     
@@ -246,10 +291,68 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     //[midpointNode setGeometry:[SCNSphere sphereWithRadius:0.1]];
     
     [self.scene.rootNode addChildNode:midpointNode];
+    
+    if (previousItemsRemoved) {
+        for (SCNNode *node in addedNodes) {
+            SCNVector3 p = node.position;
+            SCNVector3 startP = SCNVector3Make(node.position.x, node.position.y, node.position.z);
+            CABasicAnimation *nodeAdditionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+            nodeAdditionAnimation.fromValue = [NSValue valueWithSCNVector3:startP];
+            nodeAdditionAnimation.toValue = [NSValue valueWithSCNVector3:p];
+            nodeAdditionAnimation.repeatCount = 1;
+            nodeAdditionAnimation.autoreverses = NO;
+            nodeAdditionAnimation.duration = 2.0;
+            nodeAdditionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+            
+            node.position = p;
+            [node addAnimation:nodeAdditionAnimation forKey:@"nodeAdditionAnimation"];
+        }
+    }
+    
+    // fade in is done anyway
+    for (SCNNode *node in addedNodes) {
+        node.opacity = 0.0f;
+        
+        i = 0;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (0.2 * (CGFloat)i++) * NSEC_PER_SEC),
+                       dispatch_get_main_queue(), ^{
+            CABasicAnimation *nodeOpacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+            nodeOpacityAnimation.fromValue = @(0.0f);
+            nodeOpacityAnimation.toValue = @(1.0f);
+            nodeOpacityAnimation.repeatCount = 1;
+            nodeOpacityAnimation.autoreverses = NO;
+            nodeOpacityAnimation.duration = 0.8;
+            nodeOpacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+            
+            node.opacity = 1.0f;
+            [node addAnimation:nodeOpacityAnimation forKey:@"nodeOpacityAnimation"];
+        });
+    }
+}
+
+// only the removal animation 'nodeRemovalAnimation' has its delegate set, hence no conditionals here.
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    SCNNode *node = [anim valueForKey:@"animatedNode"];
+    [node removeFromParentNode];
 }
 
 - (SCNNode *)sheetItemsMidpointNode {
     return [self.scene.rootNode childNodeWithName:@"sheetItemsCenter" recursively:YES];
+}
+
+- (void)setUpCamera {
+    if (self.centerContent) {
+        if (self.sheetItemNodes.count > 0)
+            NSParameterAssert(self.sheetItemsMidpointNode);
+        
+        [self setUpCameraPointedAtTarget:self.sheetItemsMidpointNode];
+    } else {
+        [self setUpCameraPointedAtTarget:self.sheetItemNodes.firstObject];
+        
+        // selecting moves the camera, then after that select nil to remove the selection highlight.
+        [self selectNode:self.sheetItemNodes.firstObject];
+        [self selectNode:nil];
+    }
 }
 
 - (void)setUpLighting {
@@ -309,14 +412,23 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     camera.automaticallyAdjustsZRange = YES;
     
     SCNNode *cameraNode = [[SCNNode alloc] init];
-    cameraNode.position = SCNVector3Make(targetNode.position.x, targetNode.position.y, MPSheetViewCameraZDistance);
     cameraNode.camera = camera;
     cameraNode.name = @"primaryCamera";
-    
     [self.scene.rootNode addChildNode:cameraNode];
+    [self pointCameraNode:cameraNode atTargetNode:targetNode];
+    
+    NSParameterAssert([self primaryCameraNode]);
+    NSParameterAssert([self primaryCameraNode] == cameraNode);
+}
+
+- (void)pointCameraNode:(SCNNode *)cameraNode atTargetNode:(SCNNode *)targetNode {
+    cameraNode.position = SCNVector3Make(targetNode.position.x, targetNode.position.y, MPSheetViewCameraZDistance);
 }
 
 - (void)setUpFloor {
+    if ([self.scene.rootNode childNodeWithName:@"floor" recursively:NO])
+        return;
+    
     SCNFloor *floor = [SCNFloor floor];
     
     floor.reflectivity = 0.0;
@@ -333,36 +445,34 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     
     floorNode.categoryBitMask = MPSheetViewNodeCategoryBackground;
     
+    floorNode.name = @"floor";
+    
     [self.scene.rootNode addChildNode:floorNode];
+    
+    NSParameterAssert([self.scene.rootNode childNodeWithName:@"floor" recursively:NO]);
 }
 
 - (void)setUpScene {
-    SCNScene *viewScene = [SCNScene scene];
-    self.scene = viewScene;
+    if (!self.scene) {
+        SCNScene *viewScene = [SCNScene scene];
+        self.scene = viewScene;
+    }
     
     self.autoenablesDefaultLighting = YES;
     self.backgroundColor = [NSColor colorWithCalibratedWhite:0.1 alpha:1.0];
     
-    [self refreshItems];
-    
     [self setUpFloor];
     
+    [self setUpCamera];
     
-    if (self.centerContent) {
-        if (self.sheetItemNodes.count > 0)
-            NSParameterAssert(self.sheetItemsMidpointNode);
-        
-        [self setUpCameraPointedAtTarget:self.sheetItemsMidpointNode];
-    } else {
-        [self setUpCameraPointedAtTarget:self.sheetItemNodes.firstObject];
-        
-        // selecting moves the camera, then after that select nil to remove the selection highlight.
-        [self selectNode:self.sheetItemNodes.firstObject];
-        [self selectNode:nil];
-    }
-    
-    [self setUpLighting];
+    [self setUpLighting]; // lighting depends on camera, therefore after.
 
+    [self pointCameraNode:[self primaryCameraNode] atTargetNode:self.sheetItemsMidpointNode];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self refreshItems];
+        [self pointCameraNode:[self primaryCameraNode] atTargetNode:self.sheetItemsMidpointNode];
+    });
 
     /*
     [SCNTransaction begin];

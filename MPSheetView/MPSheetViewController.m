@@ -24,6 +24,16 @@
     return self;
 }
 
+
+- (BOOL)isEqual:(id)object {
+    if (![object isKindOfClass:MPSheetView.class])
+        return NO;
+    
+    return [[object title] isEqual:self.title]
+        && [[object subtitle] isEqual:self.subtitle]
+        && [[object coverImage] isEqual:self.coverImage];
+}
+
 @end
 
 @interface MPSheetViewController ()
@@ -43,8 +53,17 @@
 }
 
 - (void)setSheetItems:(NSArray *)sheetItems {
+    if (_sheetItems == sheetItems)
+        return;
+    
+    if ([_sheetItems isEqual:sheetItems])
+        return;
+    
     _sheetItems = sheetItems;
-    [self.sheetView reloadData];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.sheetView reloadData];
+    });
 }
 
 - (NSUInteger)numberOfSheetsInSheetView:(MPSheetView *)sheetView {
