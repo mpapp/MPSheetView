@@ -10,8 +10,14 @@
 
 #import <objc/runtime.h>
 
+// TODO: the terminology is getting pretty overloaded (prepare, set up, reload, refresh).
+// TODO: Clean up the messy chained private methods.
+
 @interface MPSheetView ()
 @property (readwrite) id<MPSheetItem> selectedItem;
+
+// TODO: Get rid of this retained property (you leak the previously rendered items).
+@property (strong) NSArray *renderedSheetItems;
 @end
 
 @implementation MPSheetView
@@ -226,7 +232,20 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     return items.copy;
 }
 
++ (void)performInMainQueueAfterDelay:(NSTimeInterval)delay
+                               block:(void (^)(void))block
+{
+    int64_t delta = (int64_t)(1.0e9 * delay);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delta), dispatch_get_main_queue(), block);
+}
+
 - (void)refreshItems {
+    SCNVector3 midpointV;
+    NSArray *addedNodes = [self nodesForSheetItems:self.sheetItems midpoint:&midpointV];
+    
+    if ([self.renderedSheetItems isEqual:addedNodes])
+        return; // we already rendered these ones.
+    
     // remove existing sheetItemsRootNode.
     //[[self sheetItemsRootNode] removeFromParentNode];
     [[self sheetItemsMidpointNode] removeFromParentNode];
@@ -247,7 +266,7 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
         
         node.opacity = 1.0f;
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * (CGFloat)i++ * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.065 * (CGFloat)i++ * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             CABasicAnimation *nodeRemovalAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
             
             SCNVector3 toPos = SCNVector3Make(node.position.x, -3, node.position.z);
@@ -255,13 +274,10 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
             nodeRemovalAnimation.toValue = [NSValue valueWithSCNVector3:toPos];
             nodeRemovalAnimation.repeatCount = 1;
             nodeRemovalAnimation.autoreverses = NO;
-            nodeRemovalAnimation.duration = 5.5;
+            nodeRemovalAnimation.duration = 3.5;
             nodeRemovalAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-            nodeRemovalAnimation.delegate = self;
             
             node.position = toPos;
-            
-            [nodeRemovalAnimation setValue:node forKey:@"animatedNode"];
             
             [node addAnimation:nodeRemovalAnimation forKey:@"nodeRemovalAnimation"];
         
@@ -270,17 +286,17 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
             nodeOpacityAnimation.toValue = @(0.0f);
             nodeOpacityAnimation.repeatCount = 1;
             nodeOpacityAnimation.autoreverses = NO;
-            nodeOpacityAnimation.duration = 0.5;
+            nodeOpacityAnimation.duration = 0.35;
             nodeOpacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+            nodeOpacityAnimation.delegate = self;
+            [nodeOpacityAnimation setValue:node forKey:@"animatedNode"];
+            
             node.opacity = 0.0f;
 
             [node addAnimation:nodeOpacityAnimation forKey:@"nodeOpacityAnimation"];
         });
-        
     }
     
-    SCNVector3 midpointV;
-    NSArray *addedNodes = [self nodesForSheetItems:self.sheetItems midpoint:&midpointV];
     for (SCNNode *node in addedNodes) {
         [sheetItemsRootNode addChildNode:node];
     }
@@ -295,13 +311,13 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     if (previousItemsRemoved) {
         for (SCNNode *node in addedNodes) {
             SCNVector3 p = node.position;
-            SCNVector3 startP = SCNVector3Make(node.position.x, node.position.y, node.position.z);
+            SCNVector3 startP = SCNVector3Make(node.position.x, node.position.y + 1, node.position.z);
             CABasicAnimation *nodeAdditionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
             nodeAdditionAnimation.fromValue = [NSValue valueWithSCNVector3:startP];
             nodeAdditionAnimation.toValue = [NSValue valueWithSCNVector3:p];
             nodeAdditionAnimation.repeatCount = 1;
             nodeAdditionAnimation.autoreverses = NO;
-            nodeAdditionAnimation.duration = 2.0;
+            nodeAdditionAnimation.duration = 1.0;
             nodeAdditionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
             
             node.position = p;
@@ -310,18 +326,19 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     }
     
     // fade in is done anyway
+    NSUInteger j = 0;
     for (SCNNode *node in addedNodes) {
         node.opacity = 0.0f;
         
-        i = 0;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (0.2 * (CGFloat)i++) * NSEC_PER_SEC),
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
+                                     (.3 + 0.065 * (CGFloat)j++) * NSEC_PER_SEC),
                        dispatch_get_main_queue(), ^{
             CABasicAnimation *nodeOpacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
             nodeOpacityAnimation.fromValue = @(0.0f);
             nodeOpacityAnimation.toValue = @(1.0f);
             nodeOpacityAnimation.repeatCount = 1;
             nodeOpacityAnimation.autoreverses = NO;
-            nodeOpacityAnimation.duration = 0.8;
+            nodeOpacityAnimation.duration = 0.5;
             nodeOpacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
             
             node.opacity = 1.0f;
@@ -330,7 +347,7 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     }
 }
 
-// only the removal animation 'nodeRemovalAnimation' has its delegate set, hence no conditionals here.
+// only the removal animation 'nodeOpacityAnimation' has its delegate set, hence no conditionals here.
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     SCNNode *node = [anim valueForKey:@"animatedNode"];
     [node removeFromParentNode];
@@ -452,11 +469,9 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     NSParameterAssert([self.scene.rootNode childNodeWithName:@"floor" recursively:NO]);
 }
 
-- (void)setUpScene {
-    if (!self.scene) {
-        SCNScene *viewScene = [SCNScene scene];
-        self.scene = viewScene;
-    }
+- (void)prepareScene {
+    SCNScene *viewScene = [SCNScene scene];
+    self.scene = viewScene;
     
     self.autoenablesDefaultLighting = YES;
     self.backgroundColor = [NSColor colorWithCalibratedWhite:0.1 alpha:1.0];
@@ -466,20 +481,19 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     [self setUpCamera];
     
     [self setUpLighting]; // lighting depends on camera, therefore after.
-
+    
     [self pointCameraNode:[self primaryCameraNode] atTargetNode:self.sheetItemsMidpointNode];
+}
+
+- (void)setUpScene {
+    if (!self.scene) {
+        [self prepareScene];
+    }
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self refreshItems];
         [self pointCameraNode:[self primaryCameraNode] atTargetNode:self.sheetItemsMidpointNode];
     });
-
-    /*
-    [SCNTransaction begin];
-    SCNTransaction.AnimationDuration = 30.0;
-    [(SCNNode *)self.sheetItemNodes.firstObject setRotation:SCNVector4Make(0, 1, 0, (float)M_PI * 4)];
-    [SCNTransaction commit];
-     */
 }
 
 #pragma mark -
