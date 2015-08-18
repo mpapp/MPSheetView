@@ -331,8 +331,9 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     for (SCNNode *node in addedNodes) {
         node.opacity = 0.0f;
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,
-                                     (.3 + 0.065 * (CGFloat)j++) * NSEC_PER_SEC),
+        dispatch_after(previousItemsRemoved
+                        ? dispatch_time(DISPATCH_TIME_NOW, (.3 + 0.065 * (CGFloat)j++) * NSEC_PER_SEC)
+                        : dispatch_time(DISPATCH_TIME_NOW, 0),
                        dispatch_get_main_queue(), ^{
             CABasicAnimation *nodeOpacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
             nodeOpacityAnimation.fromValue = @(0.0f);
