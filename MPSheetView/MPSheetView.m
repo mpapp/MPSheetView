@@ -36,6 +36,7 @@
     
     self.titleFontSize = 12.0f;
     self.subtitleFontSize = 10.0f;
+    self.textColor = [NSColor whiteColor];
     
     [self prepareScene];
 }
@@ -144,9 +145,9 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     subtitleTextNode.geometry = subtitleTextGeom;
     
     SCNMaterial *textMaterial = [[SCNMaterial alloc] init];
-    textMaterial.diffuse.contents = [NSColor whiteColor];
-    textMaterial.specular.contents = [NSColor whiteColor];
-    textMaterial.ambient.contents = [NSColor whiteColor];
+    textMaterial.diffuse.contents = self.textColor;
+    textMaterial.specular.contents = self.textColor;
+    textMaterial.ambient.contents = self.textColor;
     
     titleTextNode.categoryBitMask = MPSheetViewNodeCategoryText;
     

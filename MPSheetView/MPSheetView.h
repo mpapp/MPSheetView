@@ -45,6 +45,8 @@ IB_DESIGNABLE
 
 @property (readwrite) IBInspectable NSColor *backgroundAmbientColor;
 
+@property (readwrite) IBInspectable NSColor *textColor;
+
 /** The sheets + text are adjusted vertically by this much from being vertically centre aligned. */
 @property (readwrite) IBInspectable CGFloat verticalPositionAdjustment;
 
