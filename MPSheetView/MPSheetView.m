@@ -14,7 +14,7 @@
 // TODO: Clean up the messy chained private methods.
 
 @interface MPSheetView ()
-@property (readwrite) id<MPSheetItem> selectedItem;
+@property (readwrite) id<MPSheetItem> highlightedItem;
 
 // TODO: Get rid of this retained property (you leak the previously rendered items).
 @property (strong) NSArray *renderedSheetItems;
@@ -245,7 +245,7 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     if ([self.renderedSheetItems isEqual:self.sheetItems])
         return; // we already rendered these ones.
 
-    self.selectedItem = nil;
+    self.highlightedItem = nil;
     self.renderedSheetItems = self.sheetItems;
     
     // remove existing sheetItemsRootNode.
@@ -370,8 +370,8 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
         [self setUpCameraPointedAtTarget:self.sheetItemNodes.firstObject];
         
         // selecting moves the camera, then after that select nil to remove the selection highlight.
-        [self selectNode:self.sheetItemNodes.firstObject];
-        [self selectNode:nil];
+        [self highlightNode:self.sheetItemNodes.firstObject];
+        [self highlightNode:nil];
     }
 }
 
@@ -510,7 +510,16 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     return item;
 }
 
-- (void)selectNode:(SCNNode *)node {
+- (void)highlightItem:(id<MPSheetItem>)item {
+    SCNNode *itemNode = [self.scene.rootNode childNodeWithName:item.title recursively:YES];
+    if (!item) {
+        return;
+    }
+    
+    [self highlightNode:itemNode];
+}
+
+- (void)highlightNode:(SCNNode *)node {
     id<MPSheetItem> item = [self sheetItemForNode:node];
     
     for (SCNNode *n in self.sheetItemNodes) {
@@ -542,14 +551,14 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     }
     
     if (node == nil) {
-        self.selectedItem = nil;
+        self.highlightedItem = nil;
         return;
     } else {
-        self.selectedItem = item;
+        self.highlightedItem = item;
     }
     
     if (!item) {
-        self.selectedItem = nil;
+        self.highlightedItem = nil;
         return;
     }
     
@@ -599,22 +608,22 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     SCNHitTestResult *hit = hits[0];
     
     if (event.clickCount < 2) {
-        if (hits.count > 0 && !self.selectedItem) {
-            [self selectNode:hit.node];
+        if (hits.count > 0 && !self.highlightedItem) {
+            [self highlightNode:hit.node];
         }
         else {
             id<MPSheetItem> item = [self sheetItemForNode:hit.node];
             if (item) {
-                [self selectNode:hit.node];
+                [self highlightNode:hit.node];
             }
             else {
-                [self selectNode:nil];                
+                [self highlightNode:nil];                
             }
         }
     }
     else {
-        if (!self.selectedItem) {
-            [self selectNode:hit.node];
+        if (!self.highlightedItem) {
+            [self highlightNode:hit.node];
         }
         id<MPSheetItem> item = [self sheetItemForNode:hit.node];
         [self.dataSource sheetView:self didSelectItem:item];
@@ -634,49 +643,49 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
 }
 
 - (SCNNode *)selectedMasterNode {
-    if (!self.selectedItem)
+    if (!self.highlightedItem)
         return nil;
     
-    return [self masterNodeForSheetItem:self.selectedItem];
+    return [self masterNodeForSheetItem:self.highlightedItem];
 }
 
 - (void)keyDown:(NSEvent *)theEvent {
     switch(theEvent.keyCode) {
         case 125:   // down arrow
         case 124: { // right arrow
-            if (self.selectedItem) {
-                NSUInteger selectedIndex = [self.sheetItems indexOfObject:self.selectedItem];
+            if (self.highlightedItem) {
+                NSUInteger selectedIndex = [self.sheetItems indexOfObject:self.highlightedItem];
                 if ((selectedIndex < ([self.dataSource numberOfSheetsInSheetView:self] - 1)) && (selectedIndex != NSNotFound)) {
-                    [self selectNode:[self coverNodeForSheetItem:[self.dataSource sheetView:self itemAtIndex:selectedIndex + 1]]];
+                    [self highlightNode:[self coverNodeForSheetItem:[self.dataSource sheetView:self itemAtIndex:selectedIndex + 1]]];
                 }
             }
             else if ([self.dataSource numberOfSheetsInSheetView:self] > 0) {
-                [self selectNode:[self coverNodeForSheetItem:[self.dataSource sheetView:self itemAtIndex:0]]];
+                [self highlightNode:[self coverNodeForSheetItem:[self.dataSource sheetView:self itemAtIndex:0]]];
             }
             break;
         }
         case 126:   // up arrow
         case 123: { // left arrow
-            if (self.selectedItem) {
-                NSUInteger selectedIndex = [self.sheetItems indexOfObject:self.selectedItem];
+            if (self.highlightedItem) {
+                NSUInteger selectedIndex = [self.sheetItems indexOfObject:self.highlightedItem];
                 if (selectedIndex > 0 && selectedIndex != NSNotFound) {
-                    [self selectNode:[self coverNodeForSheetItem:[self.dataSource sheetView:self itemAtIndex:selectedIndex - 1]]];
+                    [self highlightNode:[self coverNodeForSheetItem:[self.dataSource sheetView:self itemAtIndex:selectedIndex - 1]]];
                 }
             }
             else if ([self.dataSource numberOfSheetsInSheetView:self] > 0) {
-                [self selectNode:[self coverNodeForSheetItem:[self.dataSource sheetView:self itemAtIndex:0]]];
+                [self highlightNode:[self coverNodeForSheetItem:[self.dataSource sheetView:self itemAtIndex:0]]];
             }
             break;
         }
         case 36: { // enter
-            if (self.selectedItem) {
-                [self.dataSource sheetView:self didSelectItem:self.selectedItem];
+            if (self.highlightedItem) {
+                [self.dataSource sheetView:self didSelectItem:self.highlightedItem];
             }
             break;
         }
         case 49: { // space
-            if (self.selectedItem) {
-                [self.dataSource sheetView:self shouldPreviewItem:self.selectedItem];
+            if (self.highlightedItem) {
+                [self.dataSource sheetView:self shouldPreviewItem:self.highlightedItem];
             }
             break;
         }

@@ -65,6 +65,8 @@ IB_DESIGNABLE
 
 - (void)reloadData;
 
-@property (readonly) id<MPSheetItem> selectedItem;
+@property (readonly) id<MPSheetItem> highlightedItem;
+
+- (void)highlightItem:(id<MPSheetItem>)item __attribute__((nonnull));
 
 @end
