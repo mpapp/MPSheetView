@@ -23,9 +23,12 @@
 
 - (id<MPSheetItem>)sheetView:(MPSheetView *)sheetView itemAtIndex:(NSUInteger)index;
 
+- (NSMenu *)sheetView:(MPSheetView *)sheetView menuForItem:(id<MPSheetItem>)item;
+
+// TODO: separate out a delegate protocol from the data source protocol.
 - (void)sheetView:(MPSheetView *)sheetView didSelectItem:(id<MPSheetItem>)item;
 
-- (NSMenu *)sheetView:(MPSheetView *)sheetView menuForItem:(id<MPSheetItem>)item;
+- (void)sheetView:(MPSheetView *)sheetView shouldPreviewItem:(id<MPSheetItem>)item;
 
 @end
 

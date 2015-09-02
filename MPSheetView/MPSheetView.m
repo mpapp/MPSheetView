@@ -642,12 +642,7 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
 
 - (void)keyDown:(NSEvent *)theEvent {
     switch(theEvent.keyCode) {
-        case 126: { // up arrow
-            
-        }
-        case 125: { // down arrow
-            
-        }
+        case 125:   // down arrow
         case 124: { // right arrow
             if (self.selectedItem) {
                 NSUInteger selectedIndex = [self.sheetItems indexOfObject:self.selectedItem];
@@ -660,6 +655,7 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
             }
             break;
         }
+        case 126:   // up arrow
         case 123: { // left arrow
             if (self.selectedItem) {
                 NSUInteger selectedIndex = [self.sheetItems indexOfObject:self.selectedItem];
@@ -670,6 +666,19 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
             else if ([self.dataSource numberOfSheetsInSheetView:self] > 0) {
                 [self selectNode:[self coverNodeForSheetItem:[self.dataSource sheetView:self itemAtIndex:0]]];
             }
+            break;
+        }
+        case 36: { // enter
+            if (self.selectedItem) {
+                [self.dataSource sheetView:self didSelectItem:self.selectedItem];
+            }
+            break;
+        }
+        case 49: { // space
+            if (self.selectedItem) {
+                [self.dataSource sheetView:self shouldPreviewItem:self.selectedItem];
+            }
+            break;
         }
     }
 }
