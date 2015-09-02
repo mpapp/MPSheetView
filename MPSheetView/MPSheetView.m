@@ -589,6 +589,8 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     
     lightNode.light.color = self.selectionSpotlightColor;
     [lightNode.light addAnimation:spotAnimation forKey:@"spotColor"];
+    
+    [self.dataSource sheetView:self didHighlightItem:item];
 }
 
 - (NSMenu *)menuForEvent:(NSEvent *)event {

@@ -69,12 +69,20 @@
     return self.sheetItems.count;
 }
 
+- (NSUInteger)indexOfSheetItem:(id<MPSheetItem>)item {
+    return [self.sheetItems indexOfObject:item];
+}
+
 - (id<MPSheetItem>)sheetView:(MPSheetView *)sheetView itemAtIndex:(NSUInteger)index {
     return self.sheetItems[index];
 }
 
 - (void)sheetView:(MPSheetView *)sheetView didSelectItem:(id<MPSheetItem>)item {
     NSParameterAssert(item);
+}
+
+- (void)sheetView:(MPSheetView *)sheetView didHighlightItem:(id<MPSheetItem>)item {
+    NSParameterAssert(item);    
 }
 
 - (void)sheetView:(MPSheetView *)sheetView shouldPreviewItem:(id<MPSheetItem>)item {
