@@ -1,6 +1,13 @@
 # MPSheetView
 
-A one line tall collection view built in SceneKit. It looks like this:
+A one line tall collection view like control built in SceneKit. 
+
+- Content is passed in using a sheet item data source protocol.
+- Responds to left and right clicks.
+- Keyboard navigable.
+- Has certain amount of configurability in form of a series of [IBInspectable](http://nshipster.com/ibinspectable-ibdesignable/) properties.
+
+As an example, in [Manuscripts](http://manuscriptsapp.com) for which the view was developed it looks like this (the MPSheetView is the thumbnail containing view at the bottom):
 
 ![An example MPSheetView](./example.png)
 
