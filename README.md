@@ -1,8 +1,10 @@
 # MPSheetView
 
-A one line tall collection view built in SceneKit. 
+A one line tall collection view built in SceneKit. It looks like this:
 
-For some more info on the topic, watch this talk: https://vimeo.com/124317401
+![An example MPSheetView](./example.png)
+
+For a quick demo of of it, watch my NSConference 7 SceneKit intro talk (2015): https://vimeo.com/124317401
 
 ### Carthage
 
@@ -22,3 +24,5 @@ github "mpapp/MPSheetView" ~> 1.0
 ```
 
 Run `carthage update` to build the framework and drag the built `MPSheetView.framework` into your Xcode project.
+
+You'll want to also link SceneKit into the build target that uses MPSheetView.
