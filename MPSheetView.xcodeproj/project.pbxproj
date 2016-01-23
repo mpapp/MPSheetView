@@ -673,6 +673,8 @@
 				INFOPLIST_FILE = MPSheetView/Info.plist;
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = MPSheetView/Modules/MPSheetView.modulemap;
+				MODULE_NAME = com.manuscriptsapp.MPSheetView;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.manuscripts.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -693,6 +695,8 @@
 				INFOPLIST_FILE = MPSheetView/Info.plist;
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = MPSheetView/Modules/MPSheetView.modulemap;
+				MODULE_NAME = com.manuscriptsapp.MPSheetView;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.manuscripts.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -828,6 +832,8 @@
 				INFOPLIST_FILE = MPSheetView/Info.plist;
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = MPSheetView/Modules/MPSheetView.modulemap;
+				MODULE_NAME = com.manuscriptsapp.MPSheetView;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.manuscripts.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -932,6 +938,8 @@
 				INFOPLIST_FILE = MPSheetView/Info.plist;
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = MPSheetView/Modules/MPSheetView.modulemap;
+				MODULE_NAME = com.manuscriptsapp.MPSheetView;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.manuscripts.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1046,6 +1054,8 @@
 				INFOPLIST_FILE = MPSheetView/Info.plist;
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = MPSheetView/Modules/MPSheetView.modulemap;
+				MODULE_NAME = com.manuscriptsapp.MPSheetView;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.manuscripts.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1164,6 +1174,8 @@
 				INFOPLIST_FILE = MPSheetView/Info.plist;
 				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = MPSheetView/Modules/MPSheetView.modulemap;
+				MODULE_NAME = com.manuscriptsapp.MPSheetView;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.manuscripts.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
