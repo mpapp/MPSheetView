@@ -18,5 +18,4 @@ FOUNDATION_EXPORT const unsigned char MPSheetViewVersionString[];
 
 
 #import "MPSheetViewController.h"
-#import "MPSimpleSheetViewItem.h"
 #import "MPSheetView.h"
