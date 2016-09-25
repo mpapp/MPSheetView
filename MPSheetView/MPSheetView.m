@@ -93,7 +93,7 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
             coverMaterial.diffuse.intensity = 2.3;
         }
         else {
-            spotNode.light.intensity = 0.9;
+            coverMaterial.diffuse.intensity = 0.9;
         }
         
         coverMaterial.ambient.contents = [NSColor colorWithWhite:0.4 alpha:1.0];
