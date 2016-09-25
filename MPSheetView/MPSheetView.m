@@ -13,7 +13,7 @@
 // TODO: the terminology is getting pretty overloaded (prepare, set up, refresh).
 // TODO: Clean up the messy chained private methods.
 
-@interface MPSheetView ()
+@interface MPSheetView () <CAAnimationDelegate>
 @property (readwrite) id<MPSheetItem> highlightedItem;
 
 // TODO: Get rid of this retained property (you leak the previously rendered items).
@@ -30,7 +30,7 @@
     self.backgroundAmbientColor = [NSColor colorWithCalibratedWhite:0.1 alpha:1.0];
     
     self.selectionSpotlightColor = [NSColor colorWithCalibratedHue:44.0f/360.0f
-                                                        saturation:38.0f/100.0f
+                                                        saturation:18.0f/100.0f
                                                         brightness:.27
                                                              alpha:1.0];
     
@@ -86,7 +86,15 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
         
         SCNMaterial *coverMaterial = [[[SCNMaterial alloc] init] copy];
         coverMaterial.diffuse.contents = item.coverImage;
-        coverMaterial.diffuse.intensity = 0.9;
+        
+        // if on macOS Sierra, it appears the lighting model for lighting Lambert shaded materials has changed
+        //– both spot and diffuse lights were much less intense, at least when compiling with macOS 10.12 SDK?
+        if (floor(NSAppKitVersionNumber) > NSAppKitVersionNumber10_11) {
+            coverMaterial.diffuse.intensity = 2.3;
+        }
+        else {
+            spotNode.light.intensity = 0.9;
+        }
         
         coverMaterial.ambient.contents = [NSColor colorWithWhite:0.4 alpha:1.0];
         coverMaterial.ambient.intensity = 1.0f;
@@ -188,6 +196,13 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     spotNode.light = [[SCNLight alloc] init];
     spotNode.light.type = SCNLightTypeSpot;
     spotNode.light.castsShadow = YES;
+    
+    // if on macOS Sierra, it appears the lighting model for lighting Lambert shaded materials has changed
+    //– both spot and diffuse lights were much less intense, at least when compiling with macOS 10.12 SDK?
+    if (floor(NSAppKitVersionNumber) > NSAppKitVersionNumber10_11) {
+        spotNode.light.intensity = 3000.0f;
+    }
+    
     spotNode.light.spotInnerAngle = M_PI * 2.2;
     spotNode.light.spotOuterAngle = spotNode.light.spotInnerAngle * 1.6;
     spotNode.light.shadowSampleCount = 2;
