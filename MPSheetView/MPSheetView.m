@@ -196,7 +196,10 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     // if on macOS Sierra, it appears the lighting model for lighting Lambert shaded materials has changed
     //– both spot and diffuse lights were much less intense, at least when compiling with macOS 10.12 SDK?
     
-    spotNode.light.intensity = 3000.0f;
+    // 'intensity' is not available as a property on lights before Sierra.
+    if (NSAppKitVersionNumber > NSAppKitVersionNumber10_11) {
+        spotNode.light.intensity = 3000.0f;
+    }
     
     spotNode.light.spotInnerAngle = M_PI * 2.2;
     spotNode.light.spotOuterAngle = spotNode.light.spotInnerAngle * 1.6;
