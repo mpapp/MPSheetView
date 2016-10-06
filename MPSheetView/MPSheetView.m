@@ -90,7 +90,13 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
         // if on macOS Sierra, it appears the lighting model for lighting Lambert shaded materials has changed
         //– both spot and diffuse lights were much less intense, at least when compiling with macOS 10.12 SDK?
         
-        coverMaterial.diffuse.intensity = 2.3;
+        NSOperatingSystemVersion v = NSProcessInfo.processInfo.operatingSystemVersion;
+        if (v.majorVersion == 10 && v.minorVersion >= 12) {
+            coverMaterial.diffuse.intensity = 2.3;
+        }
+        else {
+            coverMaterial.diffuse.intensity = 0.9;
+        }
         
         coverMaterial.ambient.contents = [NSColor colorWithWhite:0.4 alpha:1.0];
         coverMaterial.ambient.intensity = 1.0f;
@@ -196,11 +202,11 @@ static const CGFloat MPSheetViewCameraZDistance = 2.0f;
     // if on macOS Sierra, it appears the lighting model for lighting Lambert shaded materials has changed
     //– both spot and diffuse lights were much less intense, at least when compiling with macOS 10.12 SDK?
     
-    // 'intensity' is not available as a property on lights before Sierra.
-    if (NSAppKitVersionNumber > NSAppKitVersionNumber10_11) {
+    NSOperatingSystemVersion v = NSProcessInfo.processInfo.operatingSystemVersion;
+    if (v.majorVersion == 10 && v.minorVersion >= 12) {
         spotNode.light.intensity = 3000.0f;
     }
-    
+
     spotNode.light.spotInnerAngle = M_PI * 2.2;
     spotNode.light.spotOuterAngle = spotNode.light.spotInnerAngle * 1.6;
     spotNode.light.shadowSampleCount = 2;
